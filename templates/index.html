@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Personalized Recipe Finder</title>
+    
+    <!-- Minecraft pixel font -->
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
+
+    <style>
+        body {
+            background: linear-gradient(135deg, #3c9a3c, #1f5a1f);
+            font-family: 'Press Start 2P', cursive;
+            color: #f0e68c;
+            text-align: center;
+            padding: 40px;
+        }
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            text-shadow: 3px 3px 0 #000;
+        }
+        input[type="text"] {
+            width: 300px;
+            padding: 15px;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 0.75rem;
+            border: 3px solid #567d46;
+            border-radius: 6px;
+            background-color: #a3d7a3;
+            color: #1f3a1f;
+            box-shadow: inset 3px 3px 0 #315231;
+            outline: none;
+            transition: background-color 0.3s ease;
+        }
+        input[type="text"]:focus {
+            background-color: #d0ffd0;
+        }
+        button {
+            margin-left: 15px;
+            padding: 15px 25px;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 0.75rem;
+            background-color: #7bbf59;
+            border: 3px solid #567d46;
+            border-radius: 6px;
+            color: #1f3a1f;
+            cursor: pointer;
+            box-shadow: 3px 3px 0 #315231;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #a3d7a3;
+        }
+        p {
+            margin-top: 25px;
+            font-size: 0.7rem;
+            color: #d9f0d9;
+            text-shadow: 1px 1px 0 #000;
+        }
+    </style>
+</head>
+<body>
+    <h1>Personalized Recipe Finder</h1>
+    <p>Enter your ingredients (comma separated):</p>
+    <input type="text" id="ingredientInput" placeholder="e.g., tomato, cheese, basil" />
+    <button id="findRecipesBtn">Find Recipes</button>
+
+    <script>
+        document.getElementById("findRecipesBtn").addEventListener("click", () => {
+            const input = document.getElementById("ingredientInput").value.trim();
+            if (!input) {
+                alert("Please enter some ingredients!");
+                return;
+            }
+            const encodedIngredients = encodeURIComponent(input);
+            window.location.href = `/recipes?ingredients=${encodedIngredients}`;
+        });
+    </script>
+</body>
+</html>
